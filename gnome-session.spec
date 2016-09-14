@@ -4,7 +4,7 @@
 #
 Name     : gnome-session
 Version  : 3.21.3
-Release  : 1
+Release  : 2
 URL      : https://download.gnome.org/core/3.21/3.21.4/sources/gnome-session-3.21.3.tar.xz
 Source0  : https://download.gnome.org/core/3.21/3.21.4/sources/gnome-session-3.21.3.tar.xz
 Summary  : No detailed summary available
