@@ -1,5 +1,5 @@
 PKG_NAME := gnome-session
-URL := http://ftp.gnome.org/pub/gnome/sources/gnome-session/3.22/gnome-session-3.22.1.tar.xz
+URL := http://ftp.gnome.org/pub/gnome/sources/gnome-session/3.22/gnome-session-3.22.2.tar.xz
 ARCHIVES :=
 
 include ../common/Makefile.common
