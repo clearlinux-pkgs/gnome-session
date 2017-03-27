@@ -1,20 +1,48 @@
 ===============
-Version 3.22.3
+Version 3.24.0
 ===============
-	* VT switch monitoring improvements	
+
+===============
+Version 3.23.92
+===============
+
 	* Translation updates
 
 ===============
-Version 3.22.2
+Version 3.23.91
 ===============
-	* misc fixes to gnome-session-check-accelerated
+
+	* Fix VT monitor to work with restrictive SELinux policies
+	* Disable extensions in a less destructive way from fail whale
+	* Add support for absolute paths to AutostartCondition
+	* Translation updates
+
+================
+Version 3.23.4.1
+================
+
+	* Redo login shell for wayland handling to be more functional and crossplatform
+
+===============
+Version 3.23.4
+===============
+
+	* Fix warnings at startup in check accelerated helper
+	* print the renderer under wayland in check accelerated helper
+	* fix gpu info caching logic
+	* better error checking
+	* don't tell Qt applications to look like GNOME anymore
+	* make sure a login shell runs for wayland sessions at startup
 	* Translation updates
 
 ===============
-Version 3.22.1
+Version 3.23.2
 ===============
+
 	* Fix problem when cancelling the power off dialogue
 	* Don't set locale information again after the localeexec wrapper already does
+	* Update session desktop files for gnome-settings-daemon changes, the big
+	  daemon is now split up into smaller daemons
 
 ===============
 Version 3.22.0
