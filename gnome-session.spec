@@ -4,7 +4,7 @@
 #
 Name     : gnome-session
 Version  : 3.24.1
-Release  : 10
+Release  : 11
 URL      : https://download.gnome.org/sources/gnome-session/3.24/gnome-session-3.24.1.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-session/3.24/gnome-session-3.24.1.tar.xz
 Summary  : No detailed summary available
