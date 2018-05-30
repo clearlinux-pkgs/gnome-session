@@ -1,0 +1,6 @@
+# specify this is a wayland session
+sed -i s/Name=GNOME/Name=GNOME\ on\ Wayland/ %{buildroot}/usr/share/wayland-sessions/gnome.desktop
+# rename gnome.desktop -> gnome-wayland.session so xorg session is default
+mv %{buildroot}/usr/share/wayland-sessions/{gnome,gnome-wayland}.desktop
+# rename gnome-xorg.desktop -> gnome.desktop to avoid 2 xorg session entries ('GNOME' & 'Gnome on Xorg')
+mv %{buildroot}/usr/share/xsessions/gnome{-xorg,}.desktop
