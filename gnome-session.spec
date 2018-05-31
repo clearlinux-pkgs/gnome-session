@@ -4,7 +4,7 @@
 #
 Name     : gnome-session
 Version  : 3.28.1
-Release  : 18
+Release  : 19
 URL      : https://download.gnome.org/sources/gnome-session/3.28/gnome-session-3.28.1.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-session/3.28/gnome-session-3.28.1.tar.xz
 Summary  : No detailed summary available
@@ -76,13 +76,18 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523372605
-CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain  builddir
+export SOURCE_DATE_EPOCH=1527776697
+CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain   builddir
 ninja -v -C builddir
 
 %install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang gnome-session-3.0
+## make_install_append content
+sed -i s/Name=GNOME/Name=GNOME\ on\ Wayland/ %{buildroot}/usr/share/wayland-sessions/gnome.desktop
+mv %{buildroot}/usr/share/wayland-sessions/{gnome,gnome-wayland}.desktop
+mv %{buildroot}/usr/share/xsessions/gnome{-xorg,}.desktop
+## make_install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -106,8 +111,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/gnome-session/hardware-compatibility
 /usr/share/gnome-session/sessions/gnome-dummy.session
 /usr/share/gnome-session/sessions/gnome.session
-/usr/share/wayland-sessions/gnome.desktop
-/usr/share/xsessions/gnome-xorg.desktop
+/usr/share/wayland-sessions/gnome-wayland.desktop
 /usr/share/xsessions/gnome.desktop
 
 %files doc
