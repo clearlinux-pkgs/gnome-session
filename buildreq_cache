@@ -1,0 +1,5 @@
+3.30.0
+pkgconfig(ice)
+pkgconfig(sm)
+pkgconfig(xtrans)
+xmlto

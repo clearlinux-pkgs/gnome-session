@@ -1,9 +1,21 @@
-==============
-Version 3.28.1
-==============
+===============
+Version 3.30.0
+===============
+	* Fix NEWS file
+	* Translation updates
 
-	* Tell libICE to stop opening a TCP socket
-	* Shore up permissions of .config
+===============
+Version 3.29.92
+===============
+	* Add new RebootToFirmwareSetup API
+	* Crash fix when running with nested wayland compositors
+	* use full path to binaries in desktop files
+
+==============
+Version 3.29.90
+==============
+	* Drop deprecated environment variable again
+	* harden permissions on config dir
 	* Translation updates
 
 ==============
