@@ -4,7 +4,7 @@
 #
 Name     : gnome-session
 Version  : 3.32.0
-Release  : 23
+Release  : 24
 URL      : https://download.gnome.org/sources/gnome-session/3.32/gnome-session-3.32.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-session/3.32/gnome-session-3.32.0.tar.xz
 Summary  : The GNOME Session Handler
@@ -19,8 +19,13 @@ Requires: gnome-session-man = %{version}-%{release}
 BuildRequires : buildreq-gnome
 BuildRequires : buildreq-meson
 BuildRequires : docbook-xml
+BuildRequires : libICE-dev
+BuildRequires : libSM-dev
 BuildRequires : pkgconfig(gnome-desktop-3.0)
+BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(json-glib-1.0)
+BuildRequires : pkgconfig(sm)
+BuildRequires : pkgconfig(xtrans)
 BuildRequires : systemd-dev
 BuildRequires : upower-dev
 BuildRequires : xmlto
@@ -101,8 +106,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552488781
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export SOURCE_DATE_EPOCH=1556989258
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain   builddir
 ninja -v -C builddir
 
