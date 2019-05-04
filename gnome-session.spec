@@ -4,7 +4,7 @@
 #
 Name     : gnome-session
 Version  : 3.32.0
-Release  : 24
+Release  : 25
 URL      : https://download.gnome.org/sources/gnome-session/3.32/gnome-session-3.32.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-session/3.32/gnome-session-3.32.0.tar.xz
 Summary  : The GNOME Session Handler
@@ -106,7 +106,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1556989258
+export SOURCE_DATE_EPOCH=1557005339
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
