@@ -4,7 +4,7 @@
 #
 Name     : gnome-session
 Version  : 3.32.0
-Release  : 25
+Release  : 26
 URL      : https://download.gnome.org/sources/gnome-session/3.32/gnome-session-3.32.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-session/3.32/gnome-session-3.32.0.tar.xz
 Summary  : The GNOME Session Handler
@@ -16,8 +16,10 @@ Requires: gnome-session-libexec = %{version}-%{release}
 Requires: gnome-session-license = %{version}-%{release}
 Requires: gnome-session-locales = %{version}-%{release}
 Requires: gnome-session-man = %{version}-%{release}
+Requires: dconf
 BuildRequires : buildreq-gnome
 BuildRequires : buildreq-meson
+BuildRequires : dconf
 BuildRequires : docbook-xml
 BuildRequires : libICE-dev
 BuildRequires : libSM-dev
@@ -105,8 +107,9 @@ man components for the gnome-session package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1557005339
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1562701711
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
