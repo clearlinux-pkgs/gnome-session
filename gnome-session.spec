@@ -4,7 +4,7 @@
 #
 Name     : gnome-session
 Version  : 3.32.0
-Release  : 27
+Release  : 28
 URL      : https://download.gnome.org/sources/gnome-session/3.32/gnome-session-3.32.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-session/3.32/gnome-session-3.32.0.tar.xz
 Summary  : The GNOME Session Handler
@@ -32,6 +32,7 @@ BuildRequires : systemd-dev
 BuildRequires : upower-dev
 BuildRequires : xmlto
 BuildRequires : xtrans-dev
+Patch1: gles_env.patch
 
 %description
 gnome-session
@@ -102,13 +103,14 @@ man components for the gnome-session package.
 
 %prep
 %setup -q -n gnome-session-3.32.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1563224495
+export SOURCE_DATE_EPOCH=1563227163
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "

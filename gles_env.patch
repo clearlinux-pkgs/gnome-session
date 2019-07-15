@@ -1,0 +1,14 @@
+--- gnome-session-3.24.0/tools/gnome-session-check-accelerated-gles-helper.c~	2017-03-08 19:06:14.000000000 +0000
++++ gnome-session-3.24.0/tools/gnome-session-check-accelerated-gles-helper.c	2019-07-15 21:43:27.751159454 +0000
+@@ -179,8 +179,10 @@
+                 goto out;
+         }
+ 
++	renderer = getenv("GLES_RENDERER");
+ #ifdef GDK_WINDOWING_X11
+-        renderer = get_gles_renderer ();
++	if (!renderer)
++	        renderer = get_gles_renderer ();
+ #endif
+ 
+         if (renderer != NULL) {
