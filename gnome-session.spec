@@ -4,7 +4,7 @@
 #
 Name     : gnome-session
 Version  : 3.34.0
-Release  : 30
+Release  : 31
 URL      : https://download.gnome.org/sources/gnome-session/3.34/gnome-session-3.34.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-session/3.34/gnome-session-3.34.0.tar.xz
 Summary  : The GNOME Session Handler
@@ -22,8 +22,12 @@ BuildRequires : buildreq-gnome
 BuildRequires : buildreq-meson
 BuildRequires : dconf
 BuildRequires : docbook-xml
+BuildRequires : libICE-dev
+BuildRequires : libSM-dev
 BuildRequires : pkgconfig(gnome-desktop-3.0)
+BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(json-glib-1.0)
+BuildRequires : pkgconfig(sm)
 BuildRequires : pkgconfig(xtrans)
 BuildRequires : systemd-dev
 BuildRequires : upower-dev
@@ -116,7 +120,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568212695
+export SOURCE_DATE_EPOCH=1568212924
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
