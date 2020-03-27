@@ -1,28 +1,15 @@
 ==============
-Version 3.34.2
+Version 3.36.0
 ==============
 
-	autostart-app: Strip blacklisted variables from autostart environment
-	data: Ensure shutdown target does not keep units loaded
-	data: Make X11 services part of gnome-session-initialized
-	data: Remove gnome-session-stable.timer and related units
-	data: Remove never used gnome-session-shutdown.service
-	doap: Add a description
-	manager: Disable session saving on systemd managed sessions
-	session-fill: Disable session restoring on systemd
-	Translation updates: Chinese (Taiwan), Russian
+	data: Require UsbProtection component
+	doap: Call this "GNOME Session Manager"
+	Translation Updates: Indonesian, Punjabi
 
 ==============
-Version 3.34.1
+Version 3.35.3
 ==============
 
-	* Drop accidentally included `--debug` when launching
-	  `gnome-session-binary`
-	* Introduce a list of variables to potentially unset in launched
-	  sessions
-	* Translation updates
-
-==============
-Version 3.34.0
-==============
-	* Translation updates
+	binary: Allow quitting early on SIGTERM/SIGINT
+	binary: Log a critical when our SIGTERM/SIGINT handler fails to log out
+	Translation updates: Chinese (China), Galician

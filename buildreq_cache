@@ -1,8 +1,4 @@
-3.34.2
-libICE-dev
-libSM-dev
-pkgconfig(ice)
-pkgconfig(sm)
+3.36.0
 pkgconfig(xtrans)
 xmlto
 xtrans-dev
