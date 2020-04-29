@@ -4,7 +4,7 @@
 #
 Name     : gnome-session
 Version  : 3.36.0
-Release  : 34
+Release  : 35
 URL      : https://download.gnome.org/sources/gnome-session/3.36/gnome-session-3.36.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-session/3.36/gnome-session-3.36.0.tar.xz
 Summary  : No detailed summary available
