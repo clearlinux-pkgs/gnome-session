@@ -1,6 +1,8 @@
---- gnome-session-3.24.0/tools/gnome-session-check-accelerated-gles-helper.c~	2017-03-08 19:06:14.000000000 +0000
-+++ gnome-session-3.24.0/tools/gnome-session-check-accelerated-gles-helper.c	2019-07-15 21:43:27.751159454 +0000
-@@ -179,8 +179,10 @@
+diff --git a/tools/gnome-session-check-accelerated-gles-helper.c b/tools/gnome-session-check-accelerated-gles-helper.c
+index 6a4463d..0cf12b2 100644
+--- a/tools/gnome-session-check-accelerated-gles-helper.c
++++ b/tools/gnome-session-check-accelerated-gles-helper.c
+@@ -183,8 +183,10 @@ main (int argc,
                  goto out;
          }
  
