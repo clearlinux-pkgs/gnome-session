@@ -4,7 +4,7 @@
 #
 Name     : gnome-session
 Version  : 43.0
-Release  : 46
+Release  : 47
 URL      : https://download.gnome.org/sources/gnome-session/43/gnome-session-43.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-session/43/gnome-session-43.0.tar.xz
 Summary  : No detailed summary available
