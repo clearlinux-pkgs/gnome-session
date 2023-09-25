@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : gnome-session
-Version  : 44.0
-Release  : 60
-URL      : https://download.gnome.org/sources/gnome-session/44/gnome-session-44.0.tar.xz
-Source0  : https://download.gnome.org/sources/gnome-session/44/gnome-session-44.0.tar.xz
+Version  : 45.0
+Release  : 61
+URL      : https://download.gnome.org/sources/gnome-session/45/gnome-session-45.0.tar.xz
+Source0  : https://download.gnome.org/sources/gnome-session/45/gnome-session-45.0.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -105,35 +105,42 @@ man components for the gnome-session package.
 %package services
 Summary: services components for the gnome-session package.
 Group: Systemd services
+Requires: systemd
 
 %description services
 services components for the gnome-session package.
 
 
 %prep
-%setup -q -n gnome-session-44.0
-cd %{_builddir}/gnome-session-44.0
-%patch1 -p1
+%setup -q -n gnome-session-45.0
+cd %{_builddir}/gnome-session-45.0
+%patch -P 1 -p1
+pushd ..
+cp -a gnome-session-45.0 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680030304
+export SOURCE_DATE_EPOCH=1695683045
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddiravx2
+ninja -v -C builddiravx2
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/gnome-session
 cp %{_builddir}/gnome-session-%{version}/COPYING %{buildroot}/usr/share/package-licenses/gnome-session/4cc77b90af91e615a64ae04893fdffa7939db84c || :
+DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
-%find_lang gnome-session-44
+%find_lang gnome-session-45
 ## install_append content
 # specify this is a wayland session
 sed -i s/Name=GNOME/Name=GNOME\ on\ Wayland/ %{buildroot}/usr/share/wayland-sessions/gnome.desktop
@@ -142,12 +149,15 @@ mv %{buildroot}/usr/share/wayland-sessions/{gnome,gnome-wayland}.desktop
 # rename gnome-xorg.desktop -> gnome.desktop to avoid 2 xorg session entries ('GNOME' & 'Gnome on Xorg')
 mv %{buildroot}/usr/share/xsessions/gnome{-xorg,}.desktop
 ## install_append end
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/gnome-session-inhibit
+/V3/usr/bin/gnome-session-quit
 /usr/bin/gnome-session
 /usr/bin/gnome-session-inhibit
 /usr/bin/gnome-session-quit
@@ -160,14 +170,21 @@ mv %{buildroot}/usr/share/xsessions/gnome{-xorg,}.desktop
 /usr/share/gnome-session/sessions/gnome-dummy.session
 /usr/share/gnome-session/sessions/gnome.session
 /usr/share/wayland-sessions/gnome-wayland.desktop
+/usr/share/xdg-desktop-portal/gnome-portals.conf
 /usr/share/xsessions/gnome.desktop
 
 %files doc
 %defattr(0644,root,root,0755)
-%doc /usr/share/doc/gnome\-session/*
+/usr/share/doc/gnome\-session/*
 
 %files libexec
 %defattr(-,root,root,-)
+/V3/usr/libexec/gnome-session-binary
+/V3/usr/libexec/gnome-session-check-accelerated
+/V3/usr/libexec/gnome-session-check-accelerated-gl-helper
+/V3/usr/libexec/gnome-session-check-accelerated-gles-helper
+/V3/usr/libexec/gnome-session-ctl
+/V3/usr/libexec/gnome-session-failed
 /usr/libexec/gnome-session-binary
 /usr/libexec/gnome-session-check-accelerated
 /usr/libexec/gnome-session-check-accelerated-gl-helper
@@ -208,6 +225,6 @@ mv %{buildroot}/usr/share/xsessions/gnome{-xorg,}.desktop
 /usr/lib/systemd/user/gnome-session@.target
 /usr/lib/systemd/user/gnome-session@gnome.target.d/gnome.session.conf
 
-%files locales -f gnome-session-44.lang
+%files locales -f gnome-session-45.lang
 %defattr(-,root,root,-)
 
