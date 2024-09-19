@@ -7,7 +7,7 @@
 #
 Name     : gnome-session
 Version  : 46.0
-Release  : 62
+Release  : 63
 URL      : https://download.gnome.org/sources/gnome-session/46/gnome-session-46.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-session/46/gnome-session-46.0.tar.xz
 Summary  : No detailed summary available
