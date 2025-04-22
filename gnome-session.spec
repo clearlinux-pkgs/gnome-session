@@ -7,7 +7,7 @@
 #
 Name     : gnome-session
 Version  : 48.0
-Release  : 65
+Release  : 66
 URL      : https://download.gnome.org/sources/gnome-session/48/gnome-session-48.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-session/48/gnome-session-48.0.tar.xz
 Summary  : No detailed summary available
